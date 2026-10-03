@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block theme %}:root { --accent: #059669; --accent-hover: #047857; --accent-2: #0d9488; --soft: #ecfdf5; }{% endblock %}
+{% block title %}Repair Services – FixIt{% endblock %}
+{% block content %}
+<section class="max-w-6xl mx-auto px-4 py-10 md:py-16">
+  <h1 class="text-3xl md:text-5xl font-bold tracking-tight">Find a Repair Service</h1>
+  <p class="mt-3 text-neutral-500">{{ services|length }} service{{ '' if services|length == 1 else 's' }}{{ ' for ' ~ active if active }}, nearest first.</p>
+  <div class="mt-8 -mx-4 px-4 flex gap-2 overflow-x-auto pb-2">
+    <a href="{{ url_for('main.services') }}" class="{{ 'btn' if not active else 'btn-light' }} !min-h-10 !px-4 !py-2 text-sm whitespace-nowrap">All</a>
+    {% for c in categories %}<a href="{{ url_for('main.services', category=c.name) }}" class="{{ 'btn' if active == c.name else 'btn-light' }} !min-h-10 !px-4 !py-2 text-sm whitespace-nowrap">{{ c.icon }} {{ c.name }}</a>{% endfor %}
+  </div>
+  {% if services %}
+  <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{% for s in services %}{% include "_service_card.html" %}{% endfor %}</div>
+  {% else %}
+  <div class="card mt-8 text-center py-16"><div class="text-4xl">🔍</div><p class="mt-3 font-medium">No repair services for {{ active }} yet.</p><a class="btn-light mt-6" href="{{ url_for('main.services') }}">Show all services</a></div>
+  {% endif %}
+</section>
+{% endblock %}

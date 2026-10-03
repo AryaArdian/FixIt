@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block theme %}:root { --accent: #059669; --accent-hover: #047857; --accent-2: #0d9488; --soft: #ecfdf5; }{% endblock %}
+{% block title %}{{ s.name }} – FixIt{% endblock %}
+{% block content %}
+<section class="max-w-6xl mx-auto px-4 py-10 md:py-16 pb-28 md:pb-16">
+  <a class="text-sm text-neutral-500 hover:text-black" href="{{ url_for('main.services') }}">← All services</a>
+  <div class="mt-4 grid lg:grid-cols-3 gap-6">
+    <div class="card lg:col-span-2 md:p-10">
+      <div class="flex items-start justify-between gap-4">
+        <div><h1 class="text-3xl md:text-4xl font-bold tracking-tight">{{ s.name }}</h1><p class="mt-1 text-neutral-500">{{ s.category }}</p></div>
+        <span class="shrink-0 rounded-full bg-[color:var(--accent)] px-3 py-1 text-sm text-white">{{ s.rating }} ★</span>
+      </div>
+      <dl class="mt-8 grid gap-6 sm:grid-cols-2">
+        {% for label, value in [('Distance', s.distance_km ~ ' km away'), ('Price', s.price_range), ('Opening hours', s.opening_hours), ('Address', s.address)] %}
+        <div><dt class="text-sm text-neutral-500">{{ label }}</dt><dd class="mt-1 font-medium">{{ value }}</dd></div>
+        {% endfor %}
+      </dl>
+    </div>
+    <aside class="hidden md:block self-start rounded-3xl grad text-white p-8">
+      <p class="text-white/80 text-sm">Contact</p><p class="mt-1 text-xl font-semibold">{{ s.phone }}</p>
+      <a class="btn !bg-white !text-[color:var(--accent)] hover:!bg-white/90 mt-6 w-full" href="tel:{{ s.phone }}">Call now</a>
+    </aside>
+  </div>
+</section>
+<div class="md:hidden fixed inset-x-0 bottom-0 z-40 border-t border-neutral-200 bg-white/95 backdrop-blur p-3">
+  <a class="btn w-full" href="tel:{{ s.phone }}">Call {{ s.phone }}</a>
+</div>
+{% endblock %}
