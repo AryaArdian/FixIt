@@ -13,7 +13,7 @@ CATEGORIES = [dict(slug=s, name=n, icon=i) for s, n, i in _CATEGORIES]
 
 # Dummy data: (name, category, address, phone, rating, price, hours, lat, lng, km)
 _SERVICES = [
-    ("FixTech Service", "Smartphone, Laptop, Electronics", "Jl. Contoh No. 12", "0812-0000-0001", 4.8, "Starting from Rp30.000", "09:00 – 20:00", -6.2, 106.8, 1.2),
+    ("OSS Computer", "Smartphone, Laptop, Printer", "Jl. Sriwijaya No.57", "0878-1497-3161", 4.4, "Starting from Rp100.000", "08:00 – 17:00", -6.2, 106.8, 1),
     ("Audio Care", "Headset, Electronics", "Jl. Mawar No. 5", "0812-0000-0002", 4.6, "Starting from Rp20.000", "10:00 – 18:00", -6.21, 106.81, 2.4),
     ("Pedal Garage", "Bicycle", "Jl. Melati No. 9", "0812-0000-0003", 4.7, "Starting from Rp15.000", "08:00 – 17:00", -6.22, 106.79, 3.1),
     ("Jahit Cepat", "Clothing", "Jl. Anggrek No. 3", "0812-0000-0004", 4.5, "Starting from Rp10.000", "09:00 – 19:00", -6.19, 106.82, 1.8),
